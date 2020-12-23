@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.props" Condition="Exists('..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -78,14 +79,20 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Chep\source\repos\AIEngine\AIEngine;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Chep\source\repos\AIEngine\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Chep\Documents\vcpkg\installed\x86-windows\include;C:\Users\Chep\source\repos\AIEngine\AIEngine;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Chep\Documents\vcpkg\installed\x86-windows\lib;C:\Users\Chep\source\repos\AIEngine\x64\Debug;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>C:\Users\Chep\source\repos\AIEngine\AIEngine;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Chep\source\repos\AIEngine\AIEngine\x64\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>false</VcpkgEnableManifest>
+    <VcpkgManifestInstall>true</VcpkgManifestInstall>
+    <VcpkgAutoLink>true</VcpkgAutoLink>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -126,7 +133,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Chep\source\repos\AIEngine\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Chep\Documents\vcpkg\installed\x86-windows\lib;C:\Users\Chep\source\repos\AIEngine\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -150,7 +158,18 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.targets" Condition="Exists('..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.props'))" />
+    <Error Condition="!Exists('..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\vcpkg.C.Users.Chep.Documents.vcpkg.1.0.0\build\native\vcpkg.C.Users.Chep.Documents.vcpkg.targets'))" />
+  </Target>
 </Project>

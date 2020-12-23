@@ -144,9 +144,15 @@
     <ClInclude Include="AIEngine.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="GLFWWindow.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="GLFWWindow.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

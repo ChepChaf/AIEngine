@@ -1,10 +1,24 @@
 #include "AIEngine.h"
 
-#pragma comment(lib, "AIEngine.lib")
+#include <iostream>
 
-int main()
+#include <GLFW/glfw3.h>
+
+#pragma comment(lib, "AIEngine")
+
+int main(void)
 {
-	AIEngine::Application app;
+    AIEngine::Application* app = new AIEngine::Application();
 
-	app.Run();
+    app->Init();
+    while (app->IsRunning())
+    {
+        app->Update();
+    }
+    
+    app->Stop();
+    
+    delete app;
+
+    return 0;
 }
