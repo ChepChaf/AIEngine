@@ -7,7 +7,9 @@ namespace AIEngine
 	std::shared_ptr<Config> Config::s_instance = nullptr;
 	const std::vector<std::string> Config::s_allowedKeys = {
 			"window_height",
-			"window_width"
+			"window_width",
+			"window_maximized",
+			"window_name"
 	};
 
 	void Config::Init(int argc, char** argv)
@@ -42,7 +44,11 @@ namespace AIEngine
 		}
 		if (GetValue("window_maximized") == "")
 		{
-			s_instance->m_configDict["window_maximized"] = "1";
+			s_instance->m_configDict["window_maximized"] = "0";
+		}
+		if (GetValue("window_name") == "")
+		{
+			s_instance->m_configDict["window_name"] = "AIEngine";
 		}
 
 		AIE_CORE_INFO("Init Config");

@@ -11,10 +11,12 @@ namespace AIEngine
         public Window
     {
         GLFWwindow* window;
+        bool m_shouldClose;
         // Inherited via Window
     public:
         virtual int Init() override;
         virtual void Stop() override;
         virtual void Update() override;
+        virtual bool CloseEventTriggered() override;
     };
 }

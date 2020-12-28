@@ -16,7 +16,7 @@ namespace AIEngine
         }
 
         /* Init a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(Config::GetIntValue("window_width"), Config::GetIntValue("window_height"), "Hello World", NULL, NULL);
+        window = glfwCreateWindow(Config::GetIntValue("window_width"), Config::GetIntValue("window_height"), Config::GetValue("window_name").c_str(), NULL, NULL);
         if (!window)
         {
             glfwTerminate();
@@ -39,6 +39,16 @@ namespace AIEngine
 
         /* Poll for and process events */
         glfwPollEvents();
+
+        if (glfwWindowShouldClose(window))
+        {
+            m_shouldClose = true;
+        }
+    }
+
+    bool GLFWWindow::CloseEventTriggered()
+    {
+        return m_shouldClose;
     }
 
     void GLFWWindow::Stop()

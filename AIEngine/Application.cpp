@@ -46,7 +46,10 @@ namespace AIEngine
 
 		m_window->Update();
 
-		// m_isRunning = false;
+		if (m_window->CloseEventTriggered())
+		{
+			m_isRunning = false;
+		}
 	}
 	const bool Application::IsRunning() const
 	{
