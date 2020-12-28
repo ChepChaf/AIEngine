@@ -143,16 +143,22 @@
   <ItemGroup>
     <ClInclude Include="AIEngine.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="GLFWWindow.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AIEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

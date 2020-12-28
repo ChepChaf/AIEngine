@@ -2,18 +2,32 @@
 #include "Core.h"
 
 #include "Window.h"
+#include "Config.h"
 
 #include <iostream>
 
 namespace AIEngine
 {
-	void Application::Init()
+	Application::Application()
+	{
+	}
+
+	void Application::Init(int argc, char** argv)
 	{
 		Logger::Init();
+		Config::Init(argc, argv);
 		
 		AIE_CORE_INFO("Application::Init");
 
 		m_window = Window::CreateWindow();
+
+		if (!m_window)
+		{
+			AIE_CORE_ERROR("Failed to Init window.");
+			m_isRunning = false;
+
+			return;
+		}
 
 		m_isRunning = true;
 	}
@@ -32,7 +46,7 @@ namespace AIEngine
 
 		m_window->Update();
 
-		m_isRunning = false;
+		// m_isRunning = false;
 	}
 	const bool Application::IsRunning() const
 	{

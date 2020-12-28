@@ -1,5 +1,7 @@
 #include "GLFWWindow.h"
 
+#include "Config.h"
+
 namespace AIEngine
 {
     int GLFWWindow::Init()
@@ -8,8 +10,13 @@ namespace AIEngine
         if (!glfwInit())
             return -1;
 
+        if (Config::GetIntValue("window_maximized"))
+        {
+            glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+        }
+
         /* Init a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+        window = glfwCreateWindow(Config::GetIntValue("window_width"), Config::GetIntValue("window_height"), "Hello World", NULL, NULL);
         if (!window)
         {
             glfwTerminate();

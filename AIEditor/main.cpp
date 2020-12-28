@@ -6,11 +6,11 @@
 
 #pragma comment(lib, "AIEngine")
 
-int main(void)
+int main(int argc, char** argv)
 {
     AIEngine::Application* app = new AIEngine::Application();
 
-    app->Init();
+    app->Init(argc, argv);
     while (app->IsRunning())
     {
         app->Update();

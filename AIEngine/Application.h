@@ -11,7 +11,8 @@ namespace AIEngine
 		Window* m_window;
 		bool m_isRunning;
 	public:
-		void Init();
+		Application();
+		void Init(int argc, char** argv);
 		void Update();
 		void Stop();
 		const bool IsRunning() const;
